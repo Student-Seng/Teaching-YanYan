@@ -1,5 +1,7 @@
 package Shape;
 
+import java.util.Scanner;
+
 public class Cuboid extends Polyhedron {
     private double length;
     private double breadth;
@@ -10,7 +12,7 @@ public class Cuboid extends Polyhedron {
         this.breadth = breadth;
         this.height = height;
 
-        this.surfaceShapes = new Shape2D[6];
+        surfaceShapes = new Shape2D[6];
         // Base
         for (int i=0; i<2; i++)
             surfaceShapes[i] = new Rectangle(length, breadth);
@@ -27,4 +29,14 @@ public class Cuboid extends Polyhedron {
     public Cuboid(double height, double base) {
         this(base, base, height);
     }
+
+    public static Cuboid constructUI() {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter height of cuboid");
+        double height = userInput.nextInt();
+        System.out.println("Enter base of cuboid");
+        double base = userInput.nextInt();
+        return new Cuboid(height, base);
+    }
+    
 }
